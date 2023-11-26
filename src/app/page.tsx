@@ -1,3 +1,5 @@
+import ProductsList from '@/components/ProductsList/ProductsList'
+
 export default function Home() {
   return (
     <main>
@@ -13,6 +15,17 @@ export default function Home() {
         that serve no practical purpose but are guaranteed to tickle your funny
         bone and spark joy in the most unexpected ways.
       </p>
+
+      <hr />
+
+      <h2>Our Products</h2>
+
+      <p>
+        We have a wide range of products, from the downright silly to the
+        completely ridiculous. Here are some of our bestsellers:
+      </p>
+
+      <ProductsList size={6} />
     </main>
   )
 }
