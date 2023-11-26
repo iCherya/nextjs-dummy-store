@@ -4,11 +4,13 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
   HomeIcon,
+  ShoppingBagIcon,
   ChatBubbleBottomCenterIcon,
 } from '@heroicons/react/24/outline'
 
 const links = [
   { name: 'Home', href: '/', icon: HomeIcon },
+  { name: 'Products', href: '/products', icon: ShoppingBagIcon },
   {
     name: 'About us',
     href: '/about',
