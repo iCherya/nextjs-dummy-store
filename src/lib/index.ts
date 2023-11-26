@@ -21,13 +21,13 @@ export const getProducts = (size: number = 50): Promise<Product[]> => {
   })
 }
 
-export const getProductById = (id: string): Promise<Product> => {
+export const getProductById = (id: string): Promise<Product | null> => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       const product = products.find((p) => p.id === id)
 
       if (!product) {
-        reject(new Error(`Product with id ${id} not found`))
+        resolve(null)
         return
       }
 

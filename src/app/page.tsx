@@ -18,14 +18,10 @@ export default function Home() {
 
       <hr />
 
-      <h2>Our Products</h2>
-
-      <p>
-        We have a wide range of products, from the downright silly to the
-        completely ridiculous. Here are some of our bestsellers:
-      </p>
-
+      <h2>Featured Uselessness</h2>
       <ProductsList size={6} />
+
+      <hr />
     </main>
   )
 }
