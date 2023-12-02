@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { NextAppDirEmotionCacheProvider } from 'tss-react/next/appDir'
 
 import { inter } from '@/ui/fonts'
 import '@/ui/styles.css'
@@ -17,10 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <>
+        <NextAppDirEmotionCacheProvider options={{ key: 'css' }}>
           <NavigationMenu />
           {children}
-        </>
+        </NextAppDirEmotionCacheProvider>
       </body>
     </html>
   )
