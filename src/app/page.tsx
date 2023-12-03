@@ -1,6 +1,7 @@
 import Image from 'next/image'
-import ProductsList from '@/components/ProductsList/ProductsList'
 
+import ProductsList from '@/components/ProductsList/ProductsList'
+import PostsList from '@/components/Blog/PostsList/PostsList'
 import Content from '@/components/UI/Content/Content'
 import Divider from '@/components/UI/Divider/Divider'
 import Heading from '@/components/UI/Heading/Heading'
@@ -40,9 +41,8 @@ export default function Home() {
 
       <section className="px-5 py-5">
         <Heading type={2}>Absurdity Blog</Heading>
-        <p className="text-xl text-center">
-          We are currently working on our blog. Check back soon!
-        </p>
+
+        <PostsList size={3} />
       </section>
 
       <Divider />
@@ -50,7 +50,7 @@ export default function Home() {
       <section className="px-5 py-5">
         <Heading type={2}>Whimsy Wonders Community</Heading>
 
-        <div></div>
+        <p className="text-xl text-center">WIP</p>
       </section>
     </Content>
   )

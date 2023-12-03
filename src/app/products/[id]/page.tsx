@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 
-import { getProductById } from '@/lib'
+import { getProductById } from '@/lib/api/shop'
 import Content from '@/components/UI/Content/Content'
 import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs'
 import ProductInfo from '@/components/ProductInfo/ProductInfo'
