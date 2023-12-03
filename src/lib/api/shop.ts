@@ -1,5 +1,5 @@
-import products from './products'
-import type { Product } from './definitions'
+import products from '../products'
+import type { Product } from '../definitions'
 
 export const getProducts = (size: number = 50): Promise<Product[]> => {
   return new Promise((resolve, reject) => {

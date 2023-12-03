@@ -5,10 +5,12 @@ import { usePathname } from 'next/navigation'
 import {
   ShoppingBagIcon,
   ChatBubbleBottomCenterIcon,
+  DocumentTextIcon,
 } from '@heroicons/react/24/outline'
 import {
   ShoppingBagIcon as ShoppingBagIconSolid,
   ChatBubbleBottomCenterIcon as ChatBubbleBottomCenterIconSolid,
+  DocumentTextIcon as DocumentTextIconSolid,
 } from '@heroicons/react/24/solid'
 
 import { tss } from 'tss-react'
@@ -23,6 +25,11 @@ const links = [
     name: 'About us',
     href: '/about',
     icon: [ChatBubbleBottomCenterIcon, ChatBubbleBottomCenterIconSolid],
+  },
+  {
+    name: 'Blog',
+    href: '/blog',
+    icon: [DocumentTextIcon, DocumentTextIconSolid],
   },
 ]
 

@@ -1,4 +1,4 @@
-import { getProducts } from '@/lib'
+import { getProducts } from '@/lib/api/shop'
 import Link from 'next/link'
 import ProductPreview from '../ProductPreview/ProductPreview'
 
