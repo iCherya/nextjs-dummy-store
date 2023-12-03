@@ -3,7 +3,7 @@ import { NextAppDirEmotionCacheProvider } from 'tss-react/next/appDir'
 
 import { inter } from '@/ui/fonts'
 import '@/ui/styles.css'
-import NavigationMenu from '@/components/NavigationMenu/NavigationMenu'
+import Header from '@/components/Header/Header'
 
 export const metadata: Metadata = {
   title: 'Whimsy Wonders',
@@ -12,14 +12,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   return (
     <html lang="en">
       <body className={inter.className}>
         <NextAppDirEmotionCacheProvider options={{ key: 'css' }}>
-          <NavigationMenu />
+          <Header />
           {children}
         </NextAppDirEmotionCacheProvider>
       </body>
