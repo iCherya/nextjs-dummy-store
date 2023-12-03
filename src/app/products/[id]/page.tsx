@@ -1,9 +1,9 @@
 import { notFound } from 'next/navigation'
 
 import { getProductById } from '@/lib'
+import Content from '@/components/UI/Content/Content'
 import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs'
 import ProductInfo from '@/components/ProductInfo/ProductInfo'
-import ProductPreview from '@/components/ProductPreview/ProductPreview'
 
 type Props = {
   params: {
@@ -20,7 +20,7 @@ export default async function Page({ params }: Props) {
   }
 
   return (
-    <main>
+    <Content>
       <Breadcrumbs
         breadcrumbs={[
           { label: 'Homepage', href: '/' },
@@ -32,8 +32,8 @@ export default async function Page({ params }: Props) {
           },
         ]}
       />
-      <ProductPreview product={product} />
+
       <ProductInfo product={product} />
-    </main>
+    </Content>
   )
 }

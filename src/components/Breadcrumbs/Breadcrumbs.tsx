@@ -13,11 +13,23 @@ type Props = {
 
 export default function Breadcrumbs({ breadcrumbs }: Props) {
   return (
-    <nav>
-      <ul className={lusitana.className}>
+    <nav className="flex px-5 py-3 text-gray-700">
+      <ul className={'inline-flex items-center space-x-1 md:space-x-2'}>
         {breadcrumbs.map((breadcrumb, index) => (
-          <li key={breadcrumb.href} aria-current={breadcrumb.active}>
-            <Link href={breadcrumb.href}>{breadcrumb.label}</Link>
+          <li
+            key={breadcrumb.href}
+            className={`inline-flex items-center space-x-2 ${
+              breadcrumb.active && 'text-gray-500'
+            }`}
+          >
+            <Link
+              href={breadcrumb.href}
+              className={`inline-flex items-center text-sm font-medium hover:text-black" ${
+                breadcrumb.active && 'text-gray-500'
+              }`}
+            >
+              {breadcrumb.label}
+            </Link>
             {index < breadcrumbs.length - 1 ? <span>/</span> : null}
           </li>
         ))}

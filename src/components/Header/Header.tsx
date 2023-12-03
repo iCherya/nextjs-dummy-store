@@ -3,12 +3,10 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
-  HomeIcon,
   ShoppingBagIcon,
   ChatBubbleBottomCenterIcon,
 } from '@heroicons/react/24/outline'
 import {
-  HomeIcon as HomeIconSolid,
   ShoppingBagIcon as ShoppingBagIconSolid,
   ChatBubbleBottomCenterIcon as ChatBubbleBottomCenterIconSolid,
 } from '@heroicons/react/24/solid'
@@ -16,7 +14,6 @@ import {
 import { tss } from 'tss-react'
 
 const links = [
-  { name: 'Home', href: '/', icon: [HomeIcon, HomeIconSolid] },
   {
     name: 'Products',
     href: '/products',
@@ -38,14 +35,15 @@ const useStyles = tss.create({
     justifyContent: 'center',
     position: 'sticky',
     top: 0,
+    zIndex: 1,
   },
   layoutWrapper: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-    padding: '0 1rem',
-    maxWidth: '1200px',
+    padding: '0 20px',
+    maxWidth: '1024px',
     margin: '0 auto',
   },
   logo: {
@@ -62,7 +60,6 @@ const useStyles = tss.create({
     marginLeft: 'auto',
   },
   listItem: {
-    padding: '0.5rem',
     transition: 'all 0.2s ease-in-out',
     textDecorationColor: 'transparent',
 
@@ -74,6 +71,7 @@ const useStyles = tss.create({
     display: 'flex',
     alignItems: 'center',
     gap: '0.2rem',
+    padding: '1rem',
 
     '@media (max-width: 768px)': {
       ' > span': {
@@ -93,7 +91,9 @@ export default function Header() {
   return (
     <header className={classes.header}>
       <div className={classes.layoutWrapper}>
-        <div className={classes.logo}>Whimsy Wonders</div>
+        <Link href="/">
+          <div className={classes.logo}>Whimsy Wonders</div>
+        </Link>
 
         <ul className={classes.list}>
           {links.map((link) => {

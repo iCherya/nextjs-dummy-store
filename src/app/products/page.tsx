@@ -1,12 +1,12 @@
-import ProductPreview from '@/components/ProductPreview/ProductPreview'
 import ProductsList from '@/components/ProductsList/ProductsList'
+import Content from '@/components/UI/Content/Content'
+import Heading from '@/components/UI/Heading/Heading'
 
 export default function Page() {
   return (
-    <main>
-      <h1>Our Products</h1>
-
+    <Content>
+      <Heading type={1}>Our Products</Heading>
       <ProductsList />
-    </main>
+    </Content>
   )
 }
