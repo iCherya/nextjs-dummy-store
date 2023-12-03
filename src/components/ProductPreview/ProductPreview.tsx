@@ -15,8 +15,8 @@ export default function ProductPreview({ product, className = '' }: Props) {
       <Image
         src={`/store/products/${product.image}`}
         alt={product.name}
-        layout="fill"
-        objectFit="cover"
+        fill
+        style={{ objectFit: 'cover' }}
       />
     </div>
   )
