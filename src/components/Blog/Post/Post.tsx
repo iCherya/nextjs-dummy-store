@@ -1,38 +1,28 @@
-import { notFound } from 'next/navigation'
 import Image from 'next/image'
 
-import Content from '@/components/UI/Content/Content'
 import Heading from '@/components/UI/Heading/Heading'
 import { formatDate } from '@/lib/utils'
-import { getPostBySlug, markdownToHtml } from '@/lib/api/blog'
 
 type Props = {
-  params: {
-    id: string
+  data: {
+    title: string
+    date: string
+    author: {
+      name: string
+      picture: string
+    }
+    coverImage: string
+    content: string
   }
+  content: string
 }
 
-export default async function Page({ params }: Props) {
-  const slug = params.id
-  const post = getPostBySlug(slug, [
-    'slug',
-    'title',
-    'date',
-    'author',
-    'coverImage',
-    'content',
-  ])
-
-  const content = await markdownToHtml(post.content || '')
-  const { title, date, author, coverImage } = post
+export default function Post({ data, content }: Props) {
+  const { title, date, author, coverImage } = data
   const { name, picture } = author
 
-  if (!post) {
-    return notFound()
-  }
-
   return (
-    <Content>
+    <>
       <Heading type={1}>{title}</Heading>
       <div className="my-2">
         <div className="h-12 w-12 relative p-2 rounded-full overflow-hidden float-left mr-2">
@@ -53,6 +43,6 @@ export default async function Page({ params }: Props) {
           dangerouslySetInnerHTML={{ __html: content }}
         ></div>
       </article>
-    </Content>
+    </>
   )
 }
