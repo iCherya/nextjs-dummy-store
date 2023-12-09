@@ -19,7 +19,7 @@ export default function Heading({ type, children, className = '' }: Props) {
   const textSize = headingClasses[type] || ''
 
   return (
-    <Tag className={`${textSize} mb-5 font-bold text-center ${className}`}>
+    <Tag className={`${textSize} mb-5 text-center font-bold ${className}`}>
       {children}
     </Tag>
   )

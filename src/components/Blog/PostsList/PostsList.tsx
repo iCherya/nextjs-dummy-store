@@ -1,8 +1,8 @@
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
 
-import type { Post } from '@/lib/definitions'
 import { getAllPosts } from '@/lib/api/blog'
+import type { Post } from '@/lib/definitions'
 import { truncate } from '@/lib/utils'
 
 type Props = {
@@ -27,9 +27,9 @@ export default async function PostsList({ size }: Props) {
         <li key={post.slug}>
           <Link
             href={`/blog/${post.slug}`}
-            className="flex p-2 flex-col items-center shadow-md hover:shadow-xl transition-all duration-200 ease-in-out border overflow-hidden"
+            className="flex flex-col items-center overflow-hidden border p-2 shadow-md transition-all duration-200 ease-in-out hover:shadow-xl"
           >
-            <div className="h-36 w-full relative">
+            <div className="relative h-36 w-full">
               <Image
                 src={post.coverImage}
                 alt={post.title}
@@ -40,7 +40,7 @@ export default async function PostsList({ size }: Props) {
               />
             </div>
 
-            <p className="text-center p-3 text-lg ">{post.title}</p>
+            <p className="p-3 text-center text-lg">{post.title}</p>
             <p className="text-center text-sm text-gray-500">
               {truncate(post.description)}
             </p>

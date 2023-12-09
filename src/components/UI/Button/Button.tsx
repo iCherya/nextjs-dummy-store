@@ -19,10 +19,10 @@ export default function Button({
       onClick={onClick}
       type="button"
       className={clsx(
-        'font-medium rounded-lg text-sm px-5 py-2.5 items-center inline-flex',
+        'inline-flex items-center rounded-lg px-5 py-2.5 text-sm font-medium',
         {
           'cursor-not-allowed bg-slate-200 text-neutral-400': disabled,
-          'text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300':
+          'bg-blue-700 text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300':
             !disabled,
         },
         className,

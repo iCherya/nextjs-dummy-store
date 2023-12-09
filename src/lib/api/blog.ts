@@ -1,8 +1,9 @@
 import fs from 'fs'
-import { join } from 'path'
 import matter from 'gray-matter'
+import { join } from 'path'
 import { remark } from 'remark'
 import html from 'remark-html'
+
 import type { Post } from '@/lib/definitions'
 
 const postsDirectory = join(process.cwd(), 'public/blog/posts')

@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { lusitana } from '@/ui/fonts'
 
 type Breadcrumb = {
   label: string
@@ -24,7 +23,7 @@ export default function Breadcrumbs({ breadcrumbs }: Props) {
           >
             <Link
               href={breadcrumb.href}
-              className={`inline-flex items-center text-sm font-medium hover:text-black" ${
+              className={`hover:text-black" inline-flex items-center text-sm font-medium ${
                 breadcrumb.active && 'text-gray-500'
               }`}
             >

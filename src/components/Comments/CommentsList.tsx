@@ -1,13 +1,12 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import { nanoid } from 'nanoid'
+import { useEffect, useState } from 'react'
 import { tss } from 'tss-react'
 
-import { getJokes } from '@/lib/api/jokes'
 import Comment, { CommentSkeleton } from '@/components/Comments/Comment'
 import Button from '@/components/UI/Button/Button'
-
+import { getJokes } from '@/lib/api/jokes'
 import type { Joke } from '@/lib/definitions'
 
 type Props = {
@@ -60,7 +59,7 @@ export default function CommentsList({ size = 20 }: Props) {
           ))}
       </ul>
 
-      <div className="flex justify-center my-5">
+      <div className="my-5 flex justify-center">
         <Button text="Load more" onClick={() => setPage(page + 1)} />
       </div>
     </>
