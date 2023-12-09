@@ -1,6 +1,7 @@
 import Image from 'next/image'
 
 import Heading from '@/components/UI/Heading/Heading'
+import Avatar from '@/components/UI/Avatar/Avatar'
 import { formatDate } from '@/lib/utils'
 
 type Props = {
@@ -24,16 +25,16 @@ export default function Post({ data, content }: Props) {
   return (
     <>
       <Heading type={1}>{title}</Heading>
-      <div className="my-2">
-        <div className="h-12 w-12 relative p-2 rounded-full overflow-hidden float-left mr-2">
-          <Image src={picture} alt={name} fill />
-        </div>
+      <div className="my-2 flex flex-col sm:flex-row gap-2">
+        <Avatar src={picture} alt={name} size={48} />
 
-        <p className="text-gray-500">{formatDate(date)}</p>
-        <p className="text-gray-500">By {name}</p>
+        <div>
+          <p className="text-gray-500">{formatDate(date)}</p>
+          <p className="text-gray-500">by {name}</p>
+        </div>
       </div>
 
-      <article className="">
+      <article>
         <div className="h-96 w-96 relative shadow mr-5 float-left rounded-lg overflow-hidden">
           <Image src={coverImage} alt={title} fill />
         </div>
