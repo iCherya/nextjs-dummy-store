@@ -28,3 +28,8 @@ export type Post = {
   }
   content: string
 }
+
+export type Joke = {
+  id: string
+  text: string
+}

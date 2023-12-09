@@ -42,7 +42,7 @@ const useStyles = tss.create({
     justifyContent: 'center',
     position: 'sticky',
     top: 0,
-    zIndex: 1,
+    zIndex: 100,
   },
   layoutWrapper: {
     display: 'flex',

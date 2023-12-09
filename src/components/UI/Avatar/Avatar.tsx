@@ -25,8 +25,8 @@ export default function Avatar(props: AvatarProps) {
   ) : (
     <BoringAvatar
       size={size}
-      name={Date.now().toString()}
-      variant="pixel"
+      name={alt}
+      variant="marble"
       colors={['lightblue', 'lightgreen', 'lightpink', 'lightyellow']}
     />
   )

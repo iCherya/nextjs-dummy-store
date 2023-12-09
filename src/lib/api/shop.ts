@@ -14,9 +14,7 @@ export const getProducts = (size: number = 50): Promise<Product[]> => {
         return
       }
 
-      resolve(
-        products.slice(0, size).sort(() => (Math.random() > 0.5 ? 1 : -1)),
-      )
+      resolve(products.slice(0, size))
     }, Math.random() * 1000)
   })
 }

@@ -1,10 +1,13 @@
 import Image from 'next/image'
 
-import ProductsList from '@/components/ProductsList/ProductsList'
-import PostsList from '@/components/Blog/PostsList/PostsList'
+import Section from '@/components/UI/Section/Section'
 import Content from '@/components/UI/Content/Content'
 import Divider from '@/components/UI/Divider/Divider'
 import Heading from '@/components/UI/Heading/Heading'
+
+import ProductsList from '@/components/ProductsList/ProductsList'
+import PostsList from '@/components/Blog/PostsList/PostsList'
+import CommentsList from '@/components/Comments/CommentsList'
 
 export default function Home() {
   return (
@@ -29,29 +32,22 @@ export default function Home() {
           className="mx-auto rounded-md shadow-md"
         />
       </section>
-
       <Divider />
 
-      <section className="px-5 py-5">
+      <Section>
         <Heading type={2}>Featured Uselessness</Heading>
         <ProductsList size={6} />
-      </section>
+      </Section>
 
-      <Divider />
-
-      <section className="px-5 py-5">
+      <Section>
         <Heading type={2}>Absurdity Blog</Heading>
+        <PostsList size={4} />
+      </Section>
 
-        <PostsList size={3} />
-      </section>
-
-      <Divider />
-
-      <section className="px-5 py-5">
+      <Section>
         <Heading type={2}>Whimsy Wonders Community</Heading>
-
-        <p className="text-xl text-center">WIP</p>
-      </section>
+        <CommentsList size={12} />
+      </Section>
     </Content>
   )
 }
