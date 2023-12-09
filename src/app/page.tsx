@@ -1,16 +1,19 @@
 import Image from 'next/image'
 
-import ProductsList from '@/components/ProductsList/ProductsList'
-import PostsList from '@/components/Blog/PostsList/PostsList'
+import Section from '@/components/UI/Section/Section'
 import Content from '@/components/UI/Content/Content'
 import Divider from '@/components/UI/Divider/Divider'
 import Heading from '@/components/UI/Heading/Heading'
 
+import ProductsList from '@/components/ProductsList/ProductsList'
+import PostsList from '@/components/Blog/PostsList/PostsList'
+import CommentsList from '@/components/Comments/CommentsList'
+
 export default function Home() {
   return (
     <Content>
-      <section className="bg-transparent text-black px-5 py-10 flex flex-wrap lg:flex-nowrap gap-5">
-        <div>
+      <Section className="grid lg:grid-cols-2 grid-cols-1 gap-4">
+        <div className="lg:col-span-1">
           <Heading type={1}>Welcome to Whimsy Wonders</Heading>
           <p className="text-xl">
             At Whimsy Wonders, we believe that life is just too serious, and
@@ -26,32 +29,24 @@ export default function Home() {
           width={400}
           height={250}
           priority
-          className="mx-auto rounded-md shadow-md"
+          className="mx-auto rounded-md shadow-md lg:col-span-1 m-2"
         />
-      </section>
+      </Section>
 
-      <Divider />
-
-      <section className="px-5 py-5">
+      <Section>
         <Heading type={2}>Featured Uselessness</Heading>
         <ProductsList size={6} />
-      </section>
+      </Section>
 
-      <Divider />
-
-      <section className="px-5 py-5">
+      <Section>
         <Heading type={2}>Absurdity Blog</Heading>
+        <PostsList size={4} />
+      </Section>
 
-        <PostsList size={3} />
-      </section>
-
-      <Divider />
-
-      <section className="px-5 py-5">
+      <Section>
         <Heading type={2}>Whimsy Wonders Community</Heading>
-
-        <p className="text-xl text-center">WIP</p>
-      </section>
+        <CommentsList size={12} />
+      </Section>
     </Content>
   )
 }

@@ -23,7 +23,7 @@ export default async function PostsList({ size }: Props) {
 
   return (
     <ul className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-      {posts.slice(0, size ? size : posts.length).map((post) => (
+      {posts.slice(0, size ?? posts.length).map((post, index) => (
         <li key={post.slug}>
           <Link
             href={`/blog/${post.slug}`}
@@ -35,6 +35,8 @@ export default async function PostsList({ size }: Props) {
                 alt={post.title}
                 fill
                 style={{ objectFit: 'cover' }}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                priority={index === 0}
               />
             </div>
 
