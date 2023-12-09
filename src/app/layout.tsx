@@ -1,9 +1,10 @@
+import '@/ui/styles.css'
+
 import type { Metadata } from 'next'
 import { NextAppDirEmotionCacheProvider } from 'tss-react/next/appDir'
 
-import { inter } from '@/ui/fonts'
-import '@/ui/styles.css'
 import Header from '@/components/Header/Header'
+import { inter } from '@/ui/fonts'
 
 export const metadata: Metadata = {
   title: 'Whimsy Wonders',

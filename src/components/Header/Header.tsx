@@ -1,18 +1,17 @@
 'use client'
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import {
-  ShoppingBagIcon,
   ChatBubbleBottomCenterIcon,
   DocumentTextIcon,
+  ShoppingBagIcon,
 } from '@heroicons/react/24/outline'
 import {
-  ShoppingBagIcon as ShoppingBagIconSolid,
   ChatBubbleBottomCenterIcon as ChatBubbleBottomCenterIconSolid,
   DocumentTextIcon as DocumentTextIconSolid,
+  ShoppingBagIcon as ShoppingBagIconSolid,
 } from '@heroicons/react/24/solid'
-
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { tss } from 'tss-react'
 
 const links = [

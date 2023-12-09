@@ -9,5 +9,5 @@ export const formatDate = (dateString: string) => {
 }
 
 export const truncate = (text: string, length = 100) => {
-  return text.length > length ? `${text.substr(0, length)}...` : text
+  return text.length > length ? `${text.slice(0, length)}...` : text
 }

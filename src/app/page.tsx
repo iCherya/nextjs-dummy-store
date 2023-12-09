@@ -1,18 +1,16 @@
 import Image from 'next/image'
 
-import Section from '@/components/UI/Section/Section'
-import Content from '@/components/UI/Content/Content'
-import Divider from '@/components/UI/Divider/Divider'
-import Heading from '@/components/UI/Heading/Heading'
-
-import ProductsList from '@/components/ProductsList/ProductsList'
 import PostsList from '@/components/Blog/PostsList/PostsList'
 import CommentsList from '@/components/Comments/CommentsList'
+import ProductsList from '@/components/ProductsList/ProductsList'
+import Content from '@/components/UI/Content/Content'
+import Heading from '@/components/UI/Heading/Heading'
+import Section from '@/components/UI/Section/Section'
 
 export default function Home() {
   return (
     <Content>
-      <Section className="grid lg:grid-cols-2 grid-cols-1 gap-4">
+      <Section className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <div className="lg:col-span-1">
           <Heading type={1}>Welcome to Whimsy Wonders</Heading>
           <p className="text-xl">
@@ -29,7 +27,7 @@ export default function Home() {
           width={400}
           height={250}
           priority
-          className="mx-auto rounded-md shadow-md lg:col-span-1 m-2"
+          className="m-2 mx-auto rounded-md shadow-md lg:col-span-1"
         />
       </Section>
 

@@ -14,7 +14,7 @@ export default function ProductPreview({
   className = '',
 }: Props) {
   return (
-    <div className={`h-72 w-72 relative ${className}`}>
+    <div className={`relative h-72 w-72 ${className}`}>
       <Image
         src={`/store/products/${product.image}`}
         alt={product.name}
