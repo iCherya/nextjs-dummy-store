@@ -12,8 +12,8 @@ import CommentsList from '@/components/Comments/CommentsList'
 export default function Home() {
   return (
     <Content>
-      <section className="bg-transparent text-black px-5 py-10 flex flex-wrap lg:flex-nowrap gap-5">
-        <div>
+      <Section className="grid lg:grid-cols-2 grid-cols-1 gap-4">
+        <div className="lg:col-span-1">
           <Heading type={1}>Welcome to Whimsy Wonders</Heading>
           <p className="text-xl">
             At Whimsy Wonders, we believe that life is just too serious, and
@@ -29,10 +29,9 @@ export default function Home() {
           width={400}
           height={250}
           priority
-          className="mx-auto rounded-md shadow-md"
+          className="mx-auto rounded-md shadow-md lg:col-span-1 m-2"
         />
-      </section>
-      <Divider />
+      </Section>
 
       <Section>
         <Heading type={2}>Featured Uselessness</Heading>

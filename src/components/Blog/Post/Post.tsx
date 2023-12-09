@@ -36,7 +36,13 @@ export default function Post({ data, content }: Props) {
 
       <article>
         <div className="h-96 w-96 relative shadow mr-5 float-left rounded-lg overflow-hidden">
-          <Image src={coverImage} alt={title} fill />
+          <Image
+            src={coverImage}
+            alt={title}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority
+          />
         </div>
 
         <div

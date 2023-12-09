@@ -15,15 +15,18 @@ export default async function ProductsList({ size }: Props) {
   }
 
   return (
-    <ul className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-      {products.map((product) => (
-        <li key={product.id}>
+    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {products.map((product, index) => (
+        <li
+          key={product.id}
+          className="shadow-md hover:shadow-xl transition-all duration-200 ease-in-out overflow-hidden"
+        >
           <Link
             href={`/products/${product.id}`}
-            className="flex p-2 flex-col items-center shadow-md hover:shadow-xl transition-all duration-200 ease-in-out border overflow-hidden"
+            className="flex flex-col items-center"
           >
-            <ProductPreview product={product} />
-            <p className="text-center p-3 text-lg">{product.name}</p>
+            <ProductPreview product={product} preloadImage={index === 0} />
+            <p className="text-center text-lg m-2">{product.name}</p>
           </Link>
         </li>
       ))}

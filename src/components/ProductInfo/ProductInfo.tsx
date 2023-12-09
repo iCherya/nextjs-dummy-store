@@ -12,6 +12,7 @@ export default function ProductInfo({ product }: Props) {
     <div className="flex flex-col md:flex-row justify-between items-start md:items-center bg-white shadow-md rounded-lg p-6">
       <div className="w-full md:w-1/2">
         <ProductPreview
+          preloadImage
           product={product}
           className="border rounded-3xl w-full h-96 object-cover overflow-hidden"
         />
