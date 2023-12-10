@@ -1,5 +1,6 @@
 import '@/ui/styles.css'
 
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata } from 'next'
 import { NextAppDirEmotionCacheProvider } from 'tss-react/next/appDir'
 
@@ -22,6 +23,7 @@ export default function RootLayout({
         <NextAppDirEmotionCacheProvider options={{ key: 'css' }}>
           <Header />
           {children}
+          <SpeedInsights />
         </NextAppDirEmotionCacheProvider>
       </body>
     </html>
