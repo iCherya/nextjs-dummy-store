@@ -1,5 +1,3 @@
-import { notFound } from 'next/navigation'
-
 import Post from '@/components/Blog/Post/Post'
 import Content from '@/components/UI/Content/Content'
 import { getAllPosts, getPostBySlug, markdownToHtml } from '@/lib/api/blog'
@@ -23,10 +21,6 @@ export default async function Page({ params }: Props) {
 
   const content = await markdownToHtml(post.content || '')
 
-  if (!post) {
-    return notFound()
-  }
-
   return (
     <Content>
       <Post data={post} content={content} />
@@ -39,3 +33,5 @@ export async function generateStaticParams() {
 
   return posts
 }
+
+export const dynamicParams = false
