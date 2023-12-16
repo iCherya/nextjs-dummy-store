@@ -1,11 +1,13 @@
 'use client'
 
 import {
+  BugAntIcon,
   ChatBubbleBottomCenterIcon,
   DocumentTextIcon,
   ShoppingBagIcon,
 } from '@heroicons/react/24/outline'
 import {
+  BugAntIcon as BugAntIconSolid,
   ChatBubbleBottomCenterIcon as ChatBubbleBottomCenterIconSolid,
   DocumentTextIcon as DocumentTextIconSolid,
   ShoppingBagIcon as ShoppingBagIconSolid,
@@ -30,6 +32,11 @@ const links = [
     href: '/blog',
     icon: [DocumentTextIcon, DocumentTextIconSolid],
   },
+  {
+    name: 'Errors',
+    href: '/errors-page',
+    icon: [BugAntIcon, BugAntIconSolid],
+  },
 ]
 
 const useStyles = tss.create({
@@ -40,6 +47,7 @@ const useStyles = tss.create({
     display: 'flex',
     justifyContent: 'center',
     position: 'sticky',
+    opacity: 0.8,
     top: 0,
     zIndex: 100,
   },
