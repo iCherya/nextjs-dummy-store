@@ -1,5 +1,6 @@
 import Image from 'next/image'
 
+import { REMOTE_STORAGE } from '@/config/remoteStorage'
 import type { Product } from '@/lib/definitions'
 
 type Props = {
@@ -16,7 +17,7 @@ export default function ProductPreview({
   return (
     <div className={`relative h-72 w-72 ${className}`}>
       <Image
-        src={`/store/products/${product.image}`}
+        src={`${REMOTE_STORAGE.PRODUCTS_IMAGES}/${product.image}`}
         alt={product.name}
         fill
         style={{ objectFit: 'cover' }}

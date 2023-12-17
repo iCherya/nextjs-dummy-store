@@ -1,36 +1,32 @@
+import { cookies } from 'next/headers'
+
 import type { Product } from '@/lib/definitions'
+import { createClient } from '@/lib/supabase/server'
 
-import products from '../products'
+export const getProducts = async (
+  size: number = 50,
+): Promise<Product[] | null> => {
+  if (size < 0) {
+    throw new Error('Invalid size')
+  }
 
-export const getProducts = (size: number = 50): Promise<Product[]> => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (size < 0) {
-        reject(new Error('Invalid size'))
-        return
-      }
+  const supabase = createClient(cookies())
+  const { data: products } = await supabase.from('products').select('*')
 
-      if (size === 0) {
-        resolve([])
-        return
-      }
-
-      resolve(products.slice(0, size))
-    }, Math.random() * 1000)
-  })
+  return products
 }
 
-export const getProductById = (id: string): Promise<Product | null> => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const product = products.find((p) => p.id === id)
+export const getProductById = async (id: string): Promise<Product | null> => {
+  if (!id) {
+    throw new Error('Id should not be empty')
+  }
 
-      if (!product) {
-        resolve(null)
-        return
-      }
+  const supabase = createClient(cookies())
+  const { data: product } = await supabase
+    .from('products')
+    .select('*')
+    .eq('id', id)
+    .single()
 
-      resolve(product)
-    }, Math.random() * 1000)
-  })
+  return product || null
 }
