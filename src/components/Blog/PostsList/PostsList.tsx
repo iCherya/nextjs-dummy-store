@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { REMOTE_STORAGE } from '@/config/remoteStorage'
 import { getAllPosts } from '@/lib/api/blog'
 import type { Post } from '@/lib/definitions'
 import { truncate } from '@/lib/utils'
@@ -10,14 +11,14 @@ type Props = {
 }
 
 export default async function PostsList({ size }: Props) {
-  const posts: Post[] = getAllPosts([
+  const posts: Post[] = await getAllPosts([
     'slug',
     'title',
     'description',
     'coverImage',
   ])
 
-  if (!posts) {
+  if (!posts || posts.length === 0) {
     return <p>No posts found.</p>
   }
 
@@ -31,7 +32,7 @@ export default async function PostsList({ size }: Props) {
           >
             <div className="relative h-36 w-full">
               <Image
-                src={post.coverImage}
+                src={`${REMOTE_STORAGE.BLOG_IMAGES}/${post.coverImage}`}
                 alt={post.title}
                 fill
                 style={{ objectFit: 'cover' }}

@@ -1,53 +1,70 @@
-import fs from 'fs'
 import matter from 'gray-matter'
-import { join } from 'path'
 import { remark } from 'remark'
 import html from 'remark-html'
 
-import type { Post } from '@/lib/definitions'
+import type { DBPost, Post } from '@/lib/definitions'
 
-const postsDirectory = join(process.cwd(), 'public/blog/posts')
+import { createClient } from './supabase'
 
-export function getPostSlugs() {
-  return fs.readdirSync(postsDirectory)
-}
+export const getAllPostsFromDb = async () => {
+  const supabase = createClient()
+  const { data: posts } = await supabase.from('posts').select('*')
 
-export function getPostBySlug(slug: string, fields: string[] = []) {
-  const realSlug = slug.replace(/\.md$/, '')
-  const fullPath = join(postsDirectory, `${realSlug}.md`)
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
-  const { data, content } = matter(fileContents)
-
-  type Items = {
-    [key: string]: string
+  if (!posts) {
+    return []
   }
 
-  const items: Items = {}
+  return posts as DBPost[]
+}
 
-  // Ensure only the minimal needed data is exposed
+const getPostBySlugFromDb = async (slug: string): Promise<DBPost | null> => {
+  const supabase = createClient()
+  const { data: post } = await supabase
+    .from('posts')
+    .select('*')
+    .eq('slug', slug)
+    .single()
+
+  return post
+}
+
+const preparePost = (postDataFromDB: DBPost, fields: string[]) => {
+  const { slug, content: postContent } = postDataFromDB
+  const { data, content } = matter(postContent)
+
+  const post: { [key: string]: string } = {}
+
   fields.forEach((field) => {
     if (field === 'slug') {
-      items[field] = realSlug
+      post[field] = slug
     }
     if (field === 'content') {
-      items[field] = content
+      post[field] = content
     }
 
     if (typeof data[field] !== 'undefined') {
-      items[field] = data[field]
+      post[field] = data[field]
     }
   })
 
-  return items as unknown as Post
+  return post as unknown as Post
 }
 
-export function getAllPosts(fields: string[] = []) {
-  const slugs = getPostSlugs()
-  const posts = slugs
-    .map((slug) => getPostBySlug(slug, fields))
-    // sort posts by date in descending order
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
-  return posts
+export async function getAllPosts(fields: string[] = []) {
+  const postsFromDB = await getAllPostsFromDb()
+  const posts = postsFromDB.map((post) => preparePost(post, fields))
+
+  return posts.sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
+}
+
+export async function getPostBySlug(slug: string, fields: string[] = []) {
+  const postFromDB = await getPostBySlugFromDb(slug)
+
+  if (!postFromDB) {
+    return null
+  }
+
+  return preparePost(postFromDB, fields)
 }
 
 export async function markdownToHtml(markdown: string) {
