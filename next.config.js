@@ -1,12 +1,24 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      // Supabase Storage
+      {
+        protocol: 'https',
+        hostname: 'rnszqhyihsvmhkgsxned.supabase.co',
+        port: '',
+        pathname: '/storage/v1/object/public/nextjs-dummy-store-images/**',
+      },
+    ],
+  },
+}
 
 module.exports = nextConfig
 
-
 // Injected content via Sentry wizard below
 
-const { withSentryConfig } = require("@sentry/nextjs");
+const { withSentryConfig } = require('@sentry/nextjs')
 
 module.exports = withSentryConfig(
   module.exports,
@@ -16,8 +28,8 @@ module.exports = withSentryConfig(
 
     // Suppresses source map uploading logs during build
     silent: true,
-    org: "vladyslav-cherednichenko",
-    project: "nextjs-dummy-store",
+    org: 'vladyslav-cherednichenko',
+    project: 'nextjs-dummy-store',
   },
   {
     // For all available options, see:
@@ -30,7 +42,7 @@ module.exports = withSentryConfig(
     transpileClientSDK: true,
 
     // Routes browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers (increases server load)
-    tunnelRoute: "/monitoring",
+    tunnelRoute: '/monitoring',
 
     // Hides source maps from generated client bundles
     hideSourceMaps: true,
@@ -43,5 +55,5 @@ module.exports = withSentryConfig(
     // https://docs.sentry.io/product/crons/
     // https://vercel.com/docs/cron-jobs
     automaticVercelMonitors: true,
-  }
-);
+  },
+)

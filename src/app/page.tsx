@@ -6,6 +6,7 @@ import ProductsList from '@/components/ProductsList/ProductsList'
 import Content from '@/components/UI/Content/Content'
 import Heading from '@/components/UI/Heading/Heading'
 import Section from '@/components/UI/Section/Section'
+import { REMOTE_STORAGE } from '@/config/remoteStorage'
 
 export default function Home() {
   return (
@@ -22,7 +23,7 @@ export default function Home() {
           </p>
         </div>
         <Image
-          src="/identity/hero.webp"
+          src={`${REMOTE_STORAGE.ASSETS}/hero.webp`}
           alt="Whimsy Wonders"
           width={400}
           height={250}

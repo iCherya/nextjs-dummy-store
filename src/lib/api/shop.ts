@@ -1,36 +1,31 @@
 import type { Product } from '@/lib/definitions'
 
-import products from '../products'
+import { createClient } from './supabase'
 
-export const getProducts = (size: number = 50): Promise<Product[]> => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (size < 0) {
-        reject(new Error('Invalid size'))
-        return
-      }
+export const getProducts = async (
+  size: number = 50,
+): Promise<Product[] | null> => {
+  if (size < 0) {
+    throw new Error('Invalid size')
+  }
 
-      if (size === 0) {
-        resolve([])
-        return
-      }
+  const supabase = createClient()
+  const { data: products } = await supabase.from('products').select('*')
 
-      resolve(products.slice(0, size))
-    }, Math.random() * 1000)
-  })
+  return products
 }
 
-export const getProductById = (id: string): Promise<Product | null> => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const product = products.find((p) => p.id === id)
+export const getProductById = async (id: string): Promise<Product | null> => {
+  if (!id) {
+    throw new Error('Id should not be empty')
+  }
 
-      if (!product) {
-        resolve(null)
-        return
-      }
+  const supabase = createClient()
+  const { data: product } = await supabase
+    .from('products')
+    .select('*')
+    .eq('id', id)
+    .single()
 
-      resolve(product)
-    }, Math.random() * 1000)
-  })
+  return product
 }

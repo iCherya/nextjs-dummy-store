@@ -1,3 +1,5 @@
+import { notFound } from 'next/navigation'
+
 import Post from '@/components/Blog/Post/Post'
 import Content from '@/components/UI/Content/Content'
 import { getAllPosts, getPostBySlug, markdownToHtml } from '@/lib/api/blog'
@@ -10,7 +12,7 @@ type Props = {
 
 export default async function Page({ params }: Props) {
   const { slug } = params
-  const post = getPostBySlug(slug, [
+  const post = await getPostBySlug(slug, [
     'slug',
     'title',
     'date',
@@ -18,6 +20,10 @@ export default async function Page({ params }: Props) {
     'coverImage',
     'content',
   ])
+
+  if (!post) {
+    return notFound()
+  }
 
   const content = await markdownToHtml(post.content || '')
 
@@ -29,9 +35,11 @@ export default async function Page({ params }: Props) {
 }
 
 export async function generateStaticParams() {
-  const posts = getAllPosts(['slug'])
+  const posts = await getAllPosts(['slug'])
 
-  return posts
+  return posts.map(({ slug }) => ({
+    params: {
+      slug,
+    },
+  }))
 }
-
-export const dynamicParams = false

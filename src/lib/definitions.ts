@@ -29,6 +29,15 @@ export type Post = {
   content: string
 }
 
+export type DBPost = {
+  id: number
+  slug: string
+  created_at: string
+  content: string
+}
+
+// Joke types
+
 export type Joke = {
   id: string
   text: string

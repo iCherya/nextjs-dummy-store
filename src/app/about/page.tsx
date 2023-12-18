@@ -2,6 +2,7 @@ import Image from 'next/image'
 
 import Content from '@/components/UI/Content/Content'
 import Heading from '@/components/UI/Heading/Heading'
+import { REMOTE_STORAGE } from '@/config/remoteStorage'
 
 export default function Page() {
   return (
@@ -9,7 +10,7 @@ export default function Page() {
       <Heading type={1}>About us</Heading>
 
       <Image
-        src="/identity/logo_562x119.png"
+        src={`${REMOTE_STORAGE.ASSETS}/logo_562x119.png`}
         width={562}
         height={119}
         alt="Whimsy Wonders Logo"
