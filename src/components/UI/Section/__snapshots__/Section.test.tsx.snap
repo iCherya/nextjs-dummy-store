@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Section should render children with Divider component 1`] = `
+<div>
+  <section
+    class="my-10"
+  >
+    Children
+  </section>
+  DividerMock
+</div>
+`;
