@@ -14,8 +14,8 @@ describe('Section', () => {
 
     expect(screen.getByText('Children')).toBeInTheDocument()
 
-    expect(Divider).toHaveBeenCalledTimes(1)
     expect(screen.getByText('DividerMock')).toBeInTheDocument()
+    expect(Divider).toHaveBeenCalledTimes(1)
 
     expect(container).toMatchSnapshot()
   })
