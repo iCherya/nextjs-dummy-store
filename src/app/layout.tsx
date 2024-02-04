@@ -1,5 +1,6 @@
 import '@/ui/styles.css'
 
+import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata } from 'next'
 import { NextAppDirEmotionCacheProvider } from 'tss-react/next/appDir'
@@ -24,6 +25,7 @@ export default function RootLayout({
           <Header />
           {children}
           <SpeedInsights />
+          <Analytics />
         </NextAppDirEmotionCacheProvider>
       </body>
     </html>
